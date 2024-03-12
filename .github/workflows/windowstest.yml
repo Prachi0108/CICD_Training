@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master
+  schedule:
+      - cron: "0 22 * * *"
 jobs:
   build:
     runs-on: windows-latest
@@ -19,15 +21,9 @@ jobs:
       - name: Execute Behave tests
         run: |
           behave .\features\OrgangeHRMLogin.feature
-      - name: Upload Test Results
+      - name: Upload Test Resultsm
         if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: TestResults/JunitReports/TESTS-*.xml      
-      - name: "Run Daily"
-      
-        on: 
-          schedule:
-            - cron: "0 0 * * *"
-              
+          path: TestResults/JunitReports/TESTS-*.xml
