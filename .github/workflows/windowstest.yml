@@ -2,7 +2,7 @@ name: Release_Pipeline_Windows
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   build:
     runs-on: windows-latest
