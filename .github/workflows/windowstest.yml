@@ -18,7 +18,6 @@ jobs:
           pip install -r requirements.txt
       - name: Execute Behave tests
         run: |
-          cd Shell_FE_Behave_Tests
           behave .\features\OrgangeHRMLogin.feature
       - name: Upload Test Results
         if: success() || failure()
